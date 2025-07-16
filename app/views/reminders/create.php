@@ -1,6 +1,23 @@
 <div class="row justify-content-center">
   <div class="col-lg-8">
     <h2 class="mb-4">Create New Reminder</h2>
+
+    <?php if (isset($_SESSION['flash_message'])): ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?= $_SESSION['flash_message'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <?php unset($_SESSION['flash_message']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error_message'])): ?>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?= $_SESSION['error_message'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <?php unset($_SESSION['error_message']); ?>
+    <?php endif; ?>
+
     <form method="POST" action="/reminders/store">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
