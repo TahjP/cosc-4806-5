@@ -1,20 +1,16 @@
-<?php require_once 'app/views/templates/header.php' ?>
-<div class="container">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Create Reminder</h1>
-            </div>
-        </div>
-    </div>
-    <form action="/reminders/store" method="post">
-        <div class="form-group">
-            <label for="reminder">Reminder</label>
-            <input required type="text" class="form-control" name="reminder">
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a href="/reminders" class="btn btn-secondary mt-2">Back</a>
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <h2 class="mb-4">Create New Reminder</h2>
+    <form method="POST" action="/reminders/store">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Save Reminder</button>
     </form>
+  </div>
 </div>
-<?php require_once 'app/views/templates/footer.php' ?>
