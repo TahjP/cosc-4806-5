@@ -7,6 +7,24 @@
         <?= $_SESSION['flash_message'] ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
+      <script>
+        const toastContainer = document.createElement('div');
+        toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+        document.body.appendChild(toastContainer);
+
+        const toastHTML = `
+          <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                <?= $_SESSION['flash_message'] ?>
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>`;
+
+        toastContainer.innerHTML = toastHTML;
+        new bootstrap.Toast(toastContainer.firstElementChild).show();
+      </script>
       <?php unset($_SESSION['flash_message']); ?>
     <?php endif; ?>
 
