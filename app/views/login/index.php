@@ -1,30 +1,16 @@
-	<?php require_once 'app/views/templates/headerPublic.php'?>
-	<main role="main" class="container">
-			<div class="page-header" id="banner">
-					<div class="row">
-							<div class="col-lg-12">
-									<h1>You are not logged in</h1>
-							</div>
-					</div>
+<div class="row justify-content-center">
+	<div class="col-lg-6">
+		<h2 class="mb-4">Login</h2>
+		<form method="POST" action="/login/verify">
+			<div class="mb-3">
+				<label for="username" class="form-label">Username</label>
+				<input type="text" class="form-control" id="username" name="username" required>
 			</div>
-
-	<div class="row">
-			<div class="col-sm-auto">
-			<form action="/login/verify" method="post" >
-			<fieldset>
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input required type="text" class="form-control" name="username">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input required type="password" class="form-control" name="password">
-				</div>
-							<br>
-					<button type="submit" class="btn btn-primary">Login</button>
-							<a href="/create/index" class="btn btn-secondary mt-2">Create an Account</a>
-			</fieldset>
-			</form> 
-		</div>
+			<div class="mb-3">
+				<label for="password" class="form-label">Password</label>
+				<input type="password" class="form-control" id="password" name="password" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Login</button>
+		</form>
 	</div>
-	<?php require_once 'app/views/templates/footer.php' ?>
+</div>
