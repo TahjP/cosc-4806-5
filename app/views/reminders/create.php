@@ -39,12 +39,17 @@
     <form method="POST" action="/reminders/store">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="title" required>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-pencil"></i></span>
+          <input type="text" class="form-control" id="title" name="title" placeholder="e.g. Grocery List" required>
+        </div>
       </div>
+
       <div class="mb-3">
         <label for="content" class="form-label">Content</label>
-        <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+        <textarea class="form-control" id="content" name="content" rows="4" placeholder="Add your reminder details here..." required></textarea>
       </div>
+
       <button type="submit" class="btn btn-success">Save Reminder</button>
     </form>
   </div>
