@@ -1,19 +1,6 @@
-<?php require_once 'app/views/templates/header.php' ?>
-<div class="container">
-    <div class="page-header" id="banner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Hey</h1>
-                <p class="lead"> <?= date("F jS, Y"); ?></p>
-            </div>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1>Welcome to ReminderApp</h1>
+        <p>This is your simple, effective reminder manager. Log in to get started!</p>
+      </div>
     </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <p><a href="/reminders">Manage reminders</a></p>
-            <p> <a href="/logout">Click here to logout</a></p>
-        </div>
-    </div>
-
-    <?php require_once 'app/views/templates/footer.php' ?>
