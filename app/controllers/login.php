@@ -2,33 +2,24 @@
 
 class Login extends Controller {
 
-    public function index() {		
-	    $this->view('login/index');
-    }
-    
-    public function verify(){
-			$username = $_REQUEST['username'];
-			$password = $_REQUEST['password'];
+		public function index() {
+				$this->view('login/index');
+		}
 
-			$user = $this->model('User');
-			$user->authenticate($username, $password); 
-    }
+		public function verify() {
+				$username = $_POST['username'];
+				$password = $_POST['password'];
 
-			public function create() {
-					$this->view('login/create');
-			}
-	
-			public function store() {
-					$username = strtolower(trim($_REQUEST['username']));
-					$password = $_REQUEST['password'];
+				$user = $this->model('User')->getByUsername($username);	// Retrieve user data from the database
 
-					$user = $this->model('User');
-					$message = $user->register($username, $password);
-
-					if ($message === null) {
-							exit; // user has been redirected from model
-					}
-
-					$this->view('login/create', ['message' => $message]);
-			}
-}
+				if ($user && password_verify($password, $user['password'])) {
+						$_SESSION['auth'] = true;	// Set session variable to indicate successful login
+						$_SESSION['username'] = $user['username']; // Store username in session
+						$_SESSION['permissionId'] = $user['permissionId']; // Store permissionId in session
+						header("Location: /reminders");
+				} else {
+						$_SESSION['error_message'] = "Invalid login credentials.";
+						header("Location: /login");
+				}
+		}
+} 
