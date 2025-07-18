@@ -29,5 +29,17 @@ class Reports extends Controller {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function logins() {
+        if (!isset($_SESSION['auth']) || $_SESSION['permissionId'] != 1) {
+            echo "Access denied.";
+            exit;
+        }
+
+        $userModel = $this->model('User');
+        $loginStats = $userModel->getLoginCounts();
+
+        $this->view('reports/logins', ['loginStats' => $loginStats]);
+    }
+
 
 }

@@ -96,4 +96,18 @@ class User {
         header('Location: /home');
         exit;
     }
+
+    //  get login counts for all users
+    public function getLoginCounts() {
+        $stmt = $this->db->prepare("
+            SELECT users.username, COUNT(logins.id) AS logins
+            FROM logins
+            JOIN users ON logins.user_id = users.id
+            GROUP BY users.username
+            ORDER BY logins DESC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
